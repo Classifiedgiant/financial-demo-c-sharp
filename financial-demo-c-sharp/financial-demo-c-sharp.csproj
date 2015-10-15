@@ -52,6 +52,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Sparrow.Chart.Wpf.40, Version=13.1.0.118, Culture=neutral, PublicKeyToken=50f33fb8697e9a92, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sparrow.Chart.Wpf.13.1.0.118\lib\net40\Sparrow.Chart.Wpf.40.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,6 +71,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\AppModel.cs" />
     <Compile Include="model\FixedIncomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -81,18 +86,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="util\FixedIncomeCalculator.cs" />
     <Compile Include="views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view_model\AppViewModel.cs" />
     <Compile Include="view_model\BaseViewModel.cs" />
-    <Compile Include="view_model\FixedIncomeViewModel.cs" />
+    <Compile Include="view_model\ChartViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

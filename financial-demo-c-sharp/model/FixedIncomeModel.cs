@@ -6,78 +6,75 @@ using System.Threading.Tasks;
 
 namespace FinancialDemo.Model
 {
-    class FixedIncomeModel
+    public class FixedIncomeModel
     {
-        private double m_presentValue;
-        private double m_interestRate; 
-        private int m_period;
-        private double m_simpleRate;
-        private double m_discreteCompoundRate;
-        private double m_continousCompoundRate;
+        //private double m_presentValue;
+        //private double m_interestRate; 
+        //private int m_period;
+        //private double m_simpleRate;
+        //private double m_discreteCompoundRate;
+        //private double m_continousCompoundRate;
 
         public FixedIncomeModel()
         {
-            m_presentValue = 5000.0f;
-            m_interestRate = 8.0;
-            m_period = 5;
+            //m_presentValue = 5000.0f;
+            //m_interestRate = 8.0;
+            //m_period = 5;
         }
 
-        public void CalculateAll()
+        public double CalculateSimpleInterest(double presentValue, double interestRate)
         {
-            CalculateSimpleInterest();
-            CalculateDiscreteCompoundInterest();
-            CalculateContinousCompoundInterest();
+            return presentValue * (1 + interestRate);
         }
 
-        public double Value
+        public double CalculateDiscreteCompoundInterest(double presentValue, double interestRate, float period)
         {
-            get { return m_presentValue; }
-            set { m_presentValue = value; CalculateAll(); }
+            return presentValue * Math.Pow((1 + interestRate), period);
         }
 
-        public double InterestRate
+        public double CalculateContinousCompoundInterest(double presentValue, double interestRate, float period)
         {
-            get { return m_interestRate; }
-            set { m_interestRate = value; CalculateAll(); }
+            return presentValue * Math.Exp(interestRate * period);
         }
 
-        public int Period
-        {
-            get { return m_period; }
-            set { m_period = value; CalculateAll(); }
-        }
+        //private void CalculateAll(double presentValue, double interestRate, int period)
+        //{
+        //    CalculateSimpleInterest();
+        //    CalculateDiscreteCompoundInterest();
+        //    CalculateContinousCompoundInterest();
+        //}
 
-        public double SimpleRate
-        {
-            get { return m_simpleRate; }
-        }
+        //public double Value
+        //{
+        //    get { return m_presentValue; }
+        //    set { m_presentValue = value; CalculateAll(); }
+        //}
 
-        public double DiscreteRate
-        {
-            get { return m_discreteCompoundRate; }
-        }
+        //public double InterestRate
+        //{
+        //    get { return m_interestRate; }
+        //    set { m_interestRate = value; CalculateAll(); }
+        //}
 
-        public double ContinousRate
-        {
-            get { return m_continousCompoundRate; }
-        }
+        //public int Period
+        //{
+        //    get { return m_period; }
+        //    set { m_period = value; CalculateAll(); }
+        //}
 
-        private void CalculateSimpleInterest()
-        {
-            double rate = m_interestRate / 100.0f;
-            m_simpleRate = m_presentValue * (1 + rate);
-        }
+        //public double SimpleRate
+        //{
+        //    get { return m_simpleRate; }
+        //}
 
-        private void CalculateDiscreteCompoundInterest()
-        {
-            double rate = m_interestRate / 100.0f;
-            m_discreteCompoundRate = m_presentValue * Math.Pow((1 + rate), m_period);
-        }
+        //public double DiscreteRate
+        //{
+        //    get { return m_discreteCompoundRate; }
+        //}
 
-        private void CalculateContinousCompoundInterest()
-        {
-            double rate = m_interestRate / 100.0f;
-            m_continousCompoundRate = m_presentValue * Math.Exp(rate * m_period);
-        }
+        //public double ContinousRate
+        //{
+        //    get { return m_continousCompoundRate; }
+        //}
     }
 }
