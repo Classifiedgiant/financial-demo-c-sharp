@@ -4,77 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using FinancialDemo.Util;
+
 namespace FinancialDemo.Model
 {
     public class FixedIncomeModel
     {
-        //private double m_presentValue;
-        //private double m_interestRate; 
-        //private int m_period;
-        //private double m_simpleRate;
-        //private double m_discreteCompoundRate;
-        //private double m_continousCompoundRate;
+        private double m_interestRate;
+        private double m_presentValue;
+        private float m_period;
+
+        private double m_simpleRate;
+        private double m_discreteRate;
+        private double m_continousRate;
 
         public FixedIncomeModel()
         {
-            //m_presentValue = 5000.0f;
-            //m_interestRate = 8.0;
-            //m_period = 5;
+            m_interestRate = 8.0f;
+            m_presentValue = 5000.0;
+            m_period = 5;
         }
 
-        public double CalculateSimpleInterest(double presentValue, double interestRate)
+        private void CalculateAll()
         {
-            return presentValue * (1 + interestRate);
+            double rate = m_interestRate / 100.0;
+            m_simpleRate = FixedIncomeCalculator.CalculateSimpleRate(m_presentValue, rate);
+            m_discreteRate = FixedIncomeCalculator.CalculateDiscreteRate(m_presentValue, rate, m_period);
+            m_continousRate = FixedIncomeCalculator.CalculateContinousRate(m_presentValue, rate, m_period);
         }
 
-        public double CalculateDiscreteCompoundInterest(double presentValue, double interestRate, float period)
+        public double PresentValue
         {
-            return presentValue * Math.Pow((1 + interestRate), period);
+            get { return m_presentValue; }
+            set
+            {
+                m_presentValue = value;
+                CalculateAll();
+            }
         }
 
-        public double CalculateContinousCompoundInterest(double presentValue, double interestRate, float period)
+        public double InterestRate
         {
-            return presentValue * Math.Exp(interestRate * period);
+            get { return m_interestRate; }
+            set
+            {
+                m_interestRate = value;
+                CalculateAll();
+            }
         }
 
-        //private void CalculateAll(double presentValue, double interestRate, int period)
-        //{
-        //    CalculateSimpleInterest();
-        //    CalculateDiscreteCompoundInterest();
-        //    CalculateContinousCompoundInterest();
-        //}
+        public float Period
+        {
+            get { return m_period; }
+            set
+            {
+                m_period = value;
+                CalculateAll();
+            }
+        }
 
-        //public double Value
-        //{
-        //    get { return m_presentValue; }
-        //    set { m_presentValue = value; CalculateAll(); }
-        //}
+        public double SimpleRate
+        {
+            get { return m_simpleRate; }
+        }
 
-        //public double InterestRate
-        //{
-        //    get { return m_interestRate; }
-        //    set { m_interestRate = value; CalculateAll(); }
-        //}
+        public double DiscreteRate
+        {
+            get { return m_discreteRate; }
+        }
 
-        //public int Period
-        //{
-        //    get { return m_period; }
-        //    set { m_period = value; CalculateAll(); }
-        //}
-
-        //public double SimpleRate
-        //{
-        //    get { return m_simpleRate; }
-        //}
-
-        //public double DiscreteRate
-        //{
-        //    get { return m_discreteCompoundRate; }
-        //}
-
-        //public double ContinousRate
-        //{
-        //    get { return m_continousCompoundRate; }
-        //}
+        public double ContinousRate
+        {
+            get { return m_continousRate; }
+        }
     }
 }

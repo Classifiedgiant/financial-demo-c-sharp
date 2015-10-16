@@ -5,12 +5,12 @@
         xmlns:sp="http://sparrowtoolkit.codeplex.com/wpf" x:Class="financial_applications_demo_c_sharp.MainWindow"
         Title="MainWindow" Height="768" Width="1024">
     <Window.Resources>
-        <vm:AppViewModel x:Key="AppViewModel"/>
+        <vm:FixedIncomeViewModel x:Key="FixedIncomeViewModel"/>
     </Window.Resources>
     <Grid>
         <TabControl Margin="10,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabItem Header="Fixed Investment">
-                <Grid x:Name="m_fixedIncomePanel" Background="#FFE5E5E5" Margin="-12,0,0,-117" DataContext="{StaticResource AppViewModel}">
+                <Grid x:Name="m_fixedIncomePanel" Background="#FFE5E5E5" Margin="-12,0,0,-117" DataContext="{StaticResource FixedIncomeViewModel}">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Value: " VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="50,7,0,0" TextWrapping="Wrap" Text="{Binding PresentValue}" VerticalAlignment="Top" Width="120"/>
                     <TextBlock HorizontalAlignment="Left" Margin="197,10,0,0" TextWrapping="Wrap" Text="Interest Rate (%)" VerticalAlignment="Top"/>

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-using FinancialDemo.Model;
 using FinancialDemo.Util;
 
 namespace FinancialDemo.ViewModel
@@ -16,13 +15,10 @@ namespace FinancialDemo.ViewModel
         private ObservableCollection<Point> m_discreteDataPoints;
         private ObservableCollection<Point> m_continuousDataPoints;
 
-        private FixedIncomeModel m_fixedIncomeModel;
-        
-        public ChartViewModel(FixedIncomeModel fixedIncomeModel)
+        public ChartViewModel()
         {
             m_discreteDataPoints = new ObservableCollection<Point>();
             m_continuousDataPoints = new ObservableCollection<Point>();
-            m_fixedIncomeModel = fixedIncomeModel;
         }
 
         public void CreateGraphNode(double presentValue, double interestRate, float period, float interval)
