@@ -10,72 +10,72 @@ namespace FinancialDemo.Model
 {
     public class FixedIncomeModel
     {
-        private double m_interestRate;
-        private double m_presentValue;
-        private float m_period;
+        private double interestRate;
+        private double presentValue;
+        private float period;
 
-        private double m_simpleRate;
-        private double m_discreteRate;
-        private double m_continousRate;
+        private double simpleRate;
+        private double discreteRate;
+        private double continousRate;
 
         public FixedIncomeModel()
         {
-            m_interestRate = 8.0f;
-            m_presentValue = 5000.0;
-            m_period = 5;
+            interestRate = 8.0f;
+            presentValue = 5000.0;
+            period = 5;
         }
 
         private void CalculateAll()
         {
-            double rate = m_interestRate / 100.0;
-            m_simpleRate = FixedIncomeCalculator.CalculateSimpleRate(m_presentValue, rate);
-            m_discreteRate = FixedIncomeCalculator.CalculateDiscreteRate(m_presentValue, rate, m_period);
-            m_continousRate = FixedIncomeCalculator.CalculateContinousRate(m_presentValue, rate, m_period);
+            double rate = interestRate / 100.0;
+            simpleRate = FixedIncomeCalculator.CalculateSimpleRate(presentValue, rate);
+            discreteRate = FixedIncomeCalculator.CalculateDiscreteRate(presentValue, rate, period);
+            continousRate = FixedIncomeCalculator.CalculateContinousRate(presentValue, rate, period);
         }
 
         public double PresentValue
         {
-            get { return m_presentValue; }
+            get { return presentValue; }
             set
             {
-                m_presentValue = value;
+                presentValue = value;
                 CalculateAll();
             }
         }
 
         public double InterestRate
         {
-            get { return m_interestRate; }
+            get { return interestRate; }
             set
             {
-                m_interestRate = value;
+                interestRate = value;
                 CalculateAll();
             }
         }
 
         public float Period
         {
-            get { return m_period; }
+            get { return period; }
             set
             {
-                m_period = value;
+                period = value;
                 CalculateAll();
             }
         }
 
         public double SimpleRate
         {
-            get { return m_simpleRate; }
+            get { return simpleRate; }
         }
 
         public double DiscreteRate
         {
-            get { return m_discreteRate; }
+            get { return discreteRate; }
         }
 
         public double ContinousRate
         {
-            get { return m_continousRate; }
+            get { return continousRate; }
         }
     }
 }

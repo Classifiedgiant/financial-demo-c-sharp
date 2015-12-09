@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FinancialDemo.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FixedIncomeView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FixedIncomeView : UserControl
     {
-        public MainWindow()
+        public FixedIncomeView()
         {
             InitializeComponent();
         }

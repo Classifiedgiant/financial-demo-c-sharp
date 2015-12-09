@@ -1,46 +1,14 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:FinancialDemo.ViewModel"
-        xmlns:sp="http://sparrowtoolkit.codeplex.com/wpf" x:Class="financial_applications_demo_c_sharp.MainWindow"
+        xmlns:v="clr-namespace:FinancialDemo.View"
+        x:Class="FinancialDemo.View.MainWindow"
         Title="MainWindow" Height="768" Width="1024">
-    <Window.Resources>
-        <vm:FixedIncomeViewModel x:Key="FixedIncomeViewModel"/>
-    </Window.Resources>
     <Grid>
-        <TabControl Margin="10,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TabControl Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabItem Header="Fixed Investment">
-                <Grid x:Name="m_fixedIncomePanel" Background="#FFE5E5E5" Margin="-12,0,0,-117" DataContext="{StaticResource FixedIncomeViewModel}">
-                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Value: " VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="50,7,0,0" TextWrapping="Wrap" Text="{Binding PresentValue}" VerticalAlignment="Top" Width="120"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="197,10,0,0" TextWrapping="Wrap" Text="Interest Rate (%)" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="289,7,0,0" TextWrapping="Wrap" Text="{Binding InterestRate}" VerticalAlignment="Top" Width="53"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="394,10,0,0" TextWrapping="Wrap" Text="Period: " VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="439,7,0,0" TextWrapping="Wrap" Text="{Binding Period}" VerticalAlignment="Top" Width="46"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,51,0,0" TextWrapping="Wrap" Text="Simple Interest: " VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="{Binding SimpleRate}" VerticalAlignment="Top" Width="151"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,88,0,0" TextWrapping="Wrap" Text="Compound Rate:" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,109,0,0" TextWrapping="Wrap" Text="{Binding DiscreteRate}" VerticalAlignment="Top" Width="148"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,125,0,0" TextWrapping="Wrap" Text="ContinousRate: " VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,141,0,0" TextWrapping="Wrap" Text="{Binding ContinousRate}" VerticalAlignment="Top" Width="151"/>
-                    <sp:SparrowChart Theme="Rainbow" HorizontalAlignment="Stretch" Margin="166,51,10,109" VerticalAlignment="Stretch" DataContext="{Binding ChartVM}">
-                        <!-- define X axis as linear-->
-                        <sp:SparrowChart.XAxis>
-                            <sp:LinearXAxis Header="{Binding XAxis}"/>
-                        </sp:SparrowChart.XAxis>
-                        <!-- define Y axis as linear-->
-                        <sp:SparrowChart.YAxis>
-                            <sp:LinearYAxis Header="{Binding YAxis}"/>
-                        </sp:SparrowChart.YAxis>
-                        <sp:LineSeries PointsSource="{Binding DiscreteLine}" Label="Discrete Rate" XPath="X" YPath="Y"/>
-                        <sp:LineSeries PointsSource="{Binding ContinousLine}" Label="Continous Rate" XPath="X" YPath="Y"/>
-                        <sp:SparrowChart.Legend>
-                            <sp:Legend Header="Legend" LegendPosition="Outside" ShowIcon="True"/>
-                        </sp:SparrowChart.Legend>
-                    </sp:SparrowChart>
-                </Grid>
+                <v:FixedIncomeView Height="Auto"/>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Window>
