@@ -25,6 +25,7 @@ namespace FinancialDemo.ViewModel
         {
             discreteDataPoints.Clear();
             continuousDataPoints.Clear();
+
             for (float i = 0; i <= period; i+=interval)
             {
                 double discreteRate = FixedIncomeCalculator.CalculateDiscreteRate(presentValue, interestRate, i);
