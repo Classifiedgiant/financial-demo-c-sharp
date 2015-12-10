@@ -8,7 +8,7 @@ namespace FinancialDemo.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public BaseViewModel()
+        protected BaseViewModel()
         {
         }
 
